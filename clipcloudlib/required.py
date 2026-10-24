@@ -1,4 +1,4 @@
-from exceptions import MissingAttributeError
+from clipcloudlib.exceptions import MissingAttributeError
 
 
 class Required:

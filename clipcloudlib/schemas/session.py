@@ -12,9 +12,7 @@ class SessionSchema(BaseModel):
 
 
 class SessionSchemaAccessToken(BaseModel):
-    id: UUID
-    username: str
-    room_uuid: Optional[UUID] = None
+    session: SessionSchema
     access_token: str
 
     model_config = ConfigDict(from_attributes=True)

@@ -1,6 +1,6 @@
-from src.mappers.base import BaseMapper
-from src.models.redis.session import Session
-from src.schemas.room import RoomMember
+from clipcloudlib.mappers.base import BaseMapper
+from clipcloudlib.models.redis.session import Session
+from clipcloudlib.schemas.room import RoomMember
 
 
 class SessionMapper(BaseMapper[Session]):
@@ -10,15 +10,17 @@ class SessionMapper(BaseMapper[Session]):
             "username": obj.username,
             "telegram_user_id": obj.telegram_user_id,
             "room_uuid": self.dump_uuid(obj.room_uuid),
+            # "last_active": self.dump_datetime(obj.last_active),
             "created_at": self.dump_datetime(obj.created_at),
         }
-    
+
     def to_obj(self, data: dict) -> Session:
         return Session( 
             id=self.get_uuid(data, "id"),
             username=self.get(data, "username"),
-            _room_uuid=self.get_uuid_or_none(data, "room_uuid"),
-            _telegram_user_id=self.get(data, "telegram_user_id"),
+            room_uuid=self.get_uuid_or_none(data, "room_uuid"),
+            telegram_user_id=self.get_or_none(data, "telegram_user_id"),
+            # last_active=self.get_datetime(data, "last_active"),
             created_at=self.get_datetime(data, "created_at")
         )
 

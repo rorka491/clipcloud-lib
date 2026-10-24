@@ -1,7 +1,7 @@
 from datetime import datetime
 from dataclasses import dataclass
 from uuid import UUID
-from src.models.redis.base import BaseModel
+from clipcloudlib.models.redis.base import BaseModel
 
 
 @dataclass

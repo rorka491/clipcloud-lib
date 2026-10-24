@@ -1,7 +1,7 @@
 from uuid import UUID
 from datetime import datetime
-from src.mappers.base import BaseMapper
-from src.models.redis.room import Room, RoomAlias
+from clipcloudlib.mappers.base import BaseMapper
+from clipcloudlib.models.redis.room import Room, RoomAlias
 
 
 class RoomMapper(BaseMapper[Room]):
